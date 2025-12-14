@@ -1,0 +1,143 @@
+@use "@/styles" as *;
+
+.CreatePurchaseForm {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+
+  &__Form{
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__FormRow {
+    display: flex;
+    gap: $spacing-md;
+    align-items: flex-end;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__FormField {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+    
+    &--correlativo {
+      width: 150px;
+      
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    
+    &--proveedor {
+      flex: 1;
+    }
+    
+    &--half {
+      flex: 1;
+    }
+    
+    &--third {
+      flex: 1;
+    }
+    
+    &--descripcion {
+      flex: 1;
+    }
+    
+    &--small {
+      flex: 1;
+      
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    
+    &--medium {
+      flex: 1;
+      
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    
+    &--large {
+      flex: 2;
+      
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    
+    &--button {
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 2px;
+    }
+  }
+
+ &__AddItems {
+     width: 100%;
+    display: flex;
+    align-items: end;
+    gap: $spacing-md;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__Totals {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    margin-top: $spacing-md;
+    padding: $spacing-md;
+    background: $bg-color-secondary;
+    border-radius: $border-radius-md;
+    max-width: 300px;
+    margin-left: auto;
+  }
+
+  &__TotalsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    &--total {
+      border-top: 1px solid $border-color;
+      padding-top: $spacing-xs;
+      margin-top: $spacing-xs;
+    }
+  }
+
+  &__Actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-2xl;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+    
+    button {
+      width: 50%;
+      
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+}

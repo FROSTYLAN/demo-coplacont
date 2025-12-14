@@ -1,0 +1,42 @@
+@use "@/styles" as *;
+
+.pageLayout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  //gap: $spacing-lg;
+  margin-bottom: 40px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  gap: $spacing-lg;
+
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $text-color-1;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}

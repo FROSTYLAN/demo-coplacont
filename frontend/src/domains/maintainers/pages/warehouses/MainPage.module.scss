@@ -1,0 +1,15 @@
+@use "@/styles" as *;
+
+
+.filtersRow {
+  display: flex;
+  align-items: end;
+  gap:1.5rem;
+  margin-bottom: 1rem;
+}
+
+.formField{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

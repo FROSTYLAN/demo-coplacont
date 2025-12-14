@@ -1,0 +1,38 @@
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  align-items: center;
+  
+  // Responsive design for mobile
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 8px;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
+
+// Additional styles for confirmation modal content
+.confirmationContent {
+  padding: 16px 0;
+  
+  .message {
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  
+  .warningIcon {
+    color: #f59e0b;
+    margin-right: 8px;
+    font-size: 1.2em;
+  }
+  
+  .dangerIcon {
+    color: #dc2626;
+    margin-right: 8px;
+    font-size: 1.2em;
+  }
+}

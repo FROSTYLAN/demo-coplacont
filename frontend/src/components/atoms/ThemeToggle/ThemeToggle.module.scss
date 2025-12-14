@@ -1,0 +1,39 @@
+@use "@/styles" as *;
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  margin-bottom: $spacing-sm;
+  border-radius: $border-radius-lg;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  width: 100%;
+  cursor: pointer;
+
+  &__label {
+    font-size: $font-size-sm;
+    color: var(--text-color);
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      transition: all 0.3s ease;
+
+      &--active {
+        color: var(--text-color);
+      }
+
+      &--inactive {
+        color: $neutral-3;
+      }
+    }
+  }
+}

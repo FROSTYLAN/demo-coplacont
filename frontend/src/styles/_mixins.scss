@@ -1,0 +1,267 @@
+// src/styles/_mixins.scss
+// =============================================================================
+// MIXINS DE SASS - COPLACONT FRONTEND
+// =============================================================================
+
+@use './variables' as v;
+
+// -----------------------------------------------------------------------------
+// MIXINS DE RESPONSIVE DESIGN
+// -----------------------------------------------------------------------------
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{v.$breakpoint-xs - 1px}) {
+      @content;
+    }
+  }
+  @else if $breakpoint == sm {
+    @media (min-width: #{v.$breakpoint-sm}) {
+      @content;
+    }
+  }
+  @else if $breakpoint == md {
+    @media (min-width: #{v.$breakpoint-md}) {
+      @content;
+    }
+  }
+  @else if $breakpoint == lg {
+    @media (min-width: #{v.$breakpoint-lg}) {
+      @content;
+    }
+  }
+  @else if $breakpoint == xl {
+    @media (min-width: #{v.$breakpoint-xl}) {
+      @content;
+    }
+  }
+  @else if $breakpoint == 2xl {
+    @media (min-width: #{v.$breakpoint-2xl}) {
+      @content;
+    }
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: #{v.$breakpoint-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-and-up {
+  @media (min-width: #{v.$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: #{v.$breakpoint-lg}) {
+    @content;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// MIXINS DE BOTONES
+// -----------------------------------------------------------------------------
+
+@mixin button-base {
+  border: none;
+  border-radius: v.$border-radius-sm;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: v.$font-weight-medium;
+  transition: all v.$transition-normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  &:focus {
+    /* Si quieres otro color, cambia v.$primary-blue por la variable que prefieras */
+    outline: 2px solid v.$primary-blue;
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-variant($bg-color, $hover-color, $text-color: v.$neutral-5) {
+  background-color: $bg-color;
+  color: $text-color;
+
+  &:hover:not(:disabled):not(.disabled) {
+    background-color: $hover-color;
+  }
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+}
+
+// -----------------------------------------------------------------------------
+// MIXINS DE FORMULARIOS
+// -----------------------------------------------------------------------------
+
+@mixin input-base {
+  /* Usamos 1px y la variable de borde ya existente */
+  border: 1px solid v.$border-color;
+  border-radius: v.$border-radius-sm;
+  font-family: inherit;
+  transition: all v.$transition-normal;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: v.$bg-card-v2;
+
+  &:focus {
+    outline: none;
+    border-color: v.$primary-blue;
+    box-shadow: v.$box-shadow-focus;
+  }
+
+  &::placeholder {
+    color: v.$text-color-1;
+    opacity: 1;
+  }
+
+  &:disabled {
+    background-color: v.$bg-card-v1;
+    color: v.$text-color-1;
+    cursor: not-allowed;
+  }
+}
+
+@mixin input-error {
+  border-color: v.$danger-color;
+
+  &:focus {
+    border-color: v.$danger-color;
+    box-shadow: v.$box-shadow-error;
+  }
+}
+
+@mixin input-size($padding-y, $padding-x, $font-size) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+}
+
+// -----------------------------------------------------------------------------
+// MIXINS DE CARDS
+// -----------------------------------------------------------------------------
+
+@mixin card-base {
+  background: v.$bg-card-v1;
+  border-radius: v.$border-radius-md;
+  transition: all v.$transition-normal;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-variant($border-color, $shadow: null) {
+  border: 1px solid $border-color;
+
+  @if $shadow {
+    box-shadow: $shadow;
+  }
+}
+
+@mixin card-hover-effect($shadow: v.$box-shadow-lg) {
+  &:hover {
+    box-shadow: $shadow;
+    transform: translateY(-2px);
+  }
+}
+
+@mixin card-padding($padding) {
+  padding: $padding;
+}
+
+@mixin card-radius($radius) {
+  border-radius: $radius;
+}
+
+// -----------------------------------------------------------------------------          
+// MIXINS DE TEXTO
+// -----------------------------------------------------------------------------
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-shadow($color: rgba(0, 0, 0, 0.12)) {
+  text-shadow: 0 2px 4px $color;
+}
+
+@mixin heading($size, $weight: v.$font-weight-semibold, $color: v.$text-color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  line-height: v.$line-height-tight;
+}
+
+// -----------------------------------------------------------------------------
+// MIXINS DE LAYOUT
+// -----------------------------------------------------------------------------
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin container($max-width: 1200px) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 v.$spacing-lg;
+
+  @include mobile-only {
+    padding: 0 v.$spacing-md;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// MIXINS DE ANIMACIONES
+// -----------------------------------------------------------------------------
+
+@mixin fade-in($duration: v.$transition-normal) {
+  opacity: 0;
+  animation: fadeIn $duration ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin slide-up($duration: v.$transition-normal, $distance: 20px) {
+  transform: translateY($distance);
+  opacity: 0;
+  animation: slideUp $duration ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// ------------------------

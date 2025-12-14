@@ -1,0 +1,41 @@
+@use '@/styles' as *;
+/**
+ * Componente FormField - Estilos para la molécula que combina label + input
+ */
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  width: 100%;
+
+  .label {
+    font-family: $font-family-primary;
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+    color: $text-color-1;
+    margin: 0;
+    
+    .required {
+      color: $danger-color;
+      margin-left: $spacing-xs;
+    }
+  }
+
+  .errorMessage {
+    margin-top: $spacing-xs;
+  }
+
+  .helperText {
+    margin-top: $spacing-xs;
+    opacity: 0.8;
+  }
+
+  .inputContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+

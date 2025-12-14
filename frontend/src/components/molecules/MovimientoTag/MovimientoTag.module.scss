@@ -1,0 +1,19 @@
+.MovimientoTag{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  width: 100%;
+
+  &--Entrada{
+    background-color:#26C9541A;
+;
+  }
+
+  &--Salida{
+    background-color: #F747471A;
+;
+  }
+}

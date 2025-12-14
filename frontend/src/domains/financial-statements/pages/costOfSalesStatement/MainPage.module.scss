@@ -1,0 +1,77 @@
+.MainPage {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  //padding: 1rem;
+
+  &__FilterContainer {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: end;
+    //padding: 1rem;
+    background-color: var(--color-neutral-background-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--color-neutral-border-primary);
+  }
+
+  &__Filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 200px;
+  }
+
+  &__Error {
+    padding: 1rem;
+    background-color: var(--color-danger-background);
+    border: 1px solid var(--color-danger-border);
+    border-radius: 8px;
+  }
+
+  &__ReportInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem;
+    //padding: 1rem;
+    background-color: var(--color-neutral-background-tertiary);
+    border-radius: 8px;
+    border: 1px solid var(--color-neutral-border-secondary);
+  }
+
+  &__SummarySection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    //padding: 1rem;
+    background-color: var(--color-primary-background);
+    border-radius: 8px;
+    border: 1px solid var(--color-primary-border);
+  }
+
+  &__MonthlySection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    //padding: 1rem;
+    background-color: var(--color-neutral-background-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--color-neutral-border-primary);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .MainPage {
+    padding: 0.5rem;
+
+    &__FilterContainer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__Filter {
+      min-width: unset;
+    }
+  }
+}

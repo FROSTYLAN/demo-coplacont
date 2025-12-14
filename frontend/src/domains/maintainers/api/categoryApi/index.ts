@@ -1,0 +1,1 @@
+export { Api as CategoryApi } from './api';

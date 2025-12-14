@@ -1,0 +1,249 @@
+@use "@/styles" as *;
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  //height: 100%;
+  //max-width: 1200px;
+  //margin: 0 auto;
+}
+
+.welcomeSection {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: $border-radius-xl;
+  padding: $spacing-2xl;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transform: translate(-50px, 50px);
+  }
+}
+
+.welcomeContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  
+  p:first-child {
+    margin-bottom: $spacing-sm;
+    color: white !important;
+  }
+  
+  p:last-child {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: $spacing-xl;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.card {
+  background-color: $bg-color;
+  border: 1px solid $neutral-3;
+  border-radius: $border-radius-xl;
+  padding: $spacing-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    //border-color: $primary-color;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  //background: linear-gradient(135deg, $primary-color, lighten($primary-color, 10%));
+  border-radius: $border-radius-lg;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.cardInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-top: auto;
+  
+  @media (min-width: 480px) {
+    flex-direction: row;
+    gap: $spacing-md;
+  }
+  
+  button {
+    flex: 1;
+  }
+}
+
+.quickAccessSection {
+  background-color: $bg-color-secondary;
+  border-radius: $border-radius-xl;
+  padding: $spacing-xl;
+}
+
+.sectionTitle {
+  margin-bottom: $spacing-lg;
+  text-align: center;
+}
+
+.quickAccessGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: $spacing-md;
+  
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.quickAccessItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  background-color: $bg-color;
+  border: 1px solid $neutral-3;
+  border-radius: $border-radius-lg;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  
+  &:hover {
+    background-color:$border-color;
+    //border-color: $primary-color;
+    transform: translateY(-2px);
+    
+    .quickAccessIcon {
+      transform: scale(1.1);
+    }
+    
+    p {
+      color: white !important;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.quickAccessIcon {
+  font-size: 24px;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $border-radius-md;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .dashboard {
+    gap: $spacing-xl;
+  }
+  
+  .welcomeSection {
+    padding: $spacing-xl;
+  }
+  
+  .card {
+    padding: $spacing-lg;
+  }
+  
+  .quickAccessSection {
+    padding: $spacing-lg;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    gap: $spacing-lg;
+  }
+  
+  .welcomeSection {
+    padding: $spacing-lg;
+  }
+  
+  .card {
+    padding: $spacing-md;
+  }
+  
+  .cardHeader {
+    gap: $spacing-sm;
+  }
+  
+  .cardIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .quickAccessSection {
+    padding: $spacing-md;
+  }
+  
+  .quickAccessItem {
+    padding: $spacing-md;
+  }
+  
+  .quickAccessIcon {
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
+  }
+}

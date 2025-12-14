@@ -1,0 +1,204 @@
+@use '@/styles' as *;
+
+/**
+ * Componente Input - Estilos base y variantes
+ * 
+ * Estructura:
+ * 1. Estilos base del input
+ * 2. Estados (hover, focus, disabled, error)
+ * 3. Variantes de tamaño
+ * 4. Modificadores especiales
+ * 5. Contenedores y elementos relacionados
+ * 6. Variantes visuales
+ */
+
+// =============================================================================
+// ESTILOS BASE DEL INPUT
+// =============================================================================
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+   filter: invert(1); /* tema claro */
+   cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0); /* tema oscuro */
+  }
+}
+
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0); /* tema oscuro */
+}
+
+[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* tema claro */
+}
+
+
+.input {
+  // Layout y dimensiones
+  flex: 1;
+  width: 100%;
+  
+  // Apariencia visual
+  
+  border: 0.5px solid var(--border-input);
+  border-radius: $border-radius-lg;
+  background-color: transparent; // Color específico solicitado
+  
+  // Tipografía
+  color: $text-color;
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  
+  // Espaciado
+  padding: $spacing-md $spacing-lg;
+  
+  // Interacción
+  transition: all 0.2s ease;
+  outline: none;
+
+  // -----------------------------------------------------------------------------
+  // PSEUDO-ELEMENTOS Y ESTADOS BASE
+  // -----------------------------------------------------------------------------
+
+  &::placeholder {
+    color: $text-color;
+    opacity: 0.7;
+  }
+
+  &:focus {
+    border-color: $primary-blue;
+    box-shadow: $box-shadow-focus;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $primary-blue;
+  }
+
+  // -----------------------------------------------------------------------------
+  // VARIANTES DE TAMAÑO
+  // -----------------------------------------------------------------------------
+
+  &--xs {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-xs;
+  }
+
+  &--small {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+  }
+
+  &--medium {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-md;
+  }
+
+  &--large {
+    padding: $spacing-lg $spacing-xl;
+    font-size: $font-size-lg;
+  }
+
+  // -----------------------------------------------------------------------------
+  // ESTADOS ESPECIALES
+  // -----------------------------------------------------------------------------
+
+  &--error {
+    border-color: $danger-color;
+    box-shadow: $box-shadow-error;
+
+    &:focus {
+      border-color: $danger-color;
+      box-shadow: $box-shadow-error;
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // -----------------------------------------------------------------------------
+  // MODIFICADORES ESPECIALES
+  // -----------------------------------------------------------------------------
+
+  // Modificador para input con adornment
+  &--with-adornment {
+    padding-right: 48px; // Espacio para el endAdornment
+    
+    // Hacer el input transparente cuando está en contenedor
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+    
+    &:hover {
+      border: none;
+    }
+  }
+
+  // -----------------------------------------------------------------------------
+  // VARIANTES VISUALES
+  // -----------------------------------------------------------------------------
+
+  // Variante para formulario de ventas
+  &--createSale {
+
+    &::placeholder {
+      opacity: 0.6;
+    }
+
+    &:focus {
+      border-color: var(--color-blue);
+      box-shadow: none; // Mantener un look más limpio en esta variante
+    }
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-blue);
+    }
+  }
+}
+
+// =============================================================================
+// CONTENEDORES Y ELEMENTOS RELACIONADOS
+// =============================================================================
+
+// Contenedor para input con endAdornment
+.inputContainer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  border-radius: $border-radius-lg;
+  transition: all 0.2s ease;
+
+  // Estado deshabilitado del contenedor
+  &--disabled {
+    background-color: $neutral-4;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Elemento de adorno al final del input
+.endAdornment {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+
+

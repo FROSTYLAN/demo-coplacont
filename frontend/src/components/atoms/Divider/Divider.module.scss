@@ -1,0 +1,14 @@
+.divider {
+  border: none;
+  flex-shrink: 0;
+  border-style: solid;
+}
+
+.horizontal {
+  width: 100%;
+}
+
+.vertical {
+  height: 100%;
+  width: 1px;
+}

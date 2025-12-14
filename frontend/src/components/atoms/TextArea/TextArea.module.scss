@@ -1,0 +1,26 @@
+@use '@/styles' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $text-color-1;
+}
+
+.textarea {
+  padding: $spacing-sm;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-md;
+  font-size: $font-size-xs;
+  background-color: $bg-color;
+  color: $text-color;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-blue;
+  }
+}

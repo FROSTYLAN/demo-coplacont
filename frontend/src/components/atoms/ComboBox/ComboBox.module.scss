@@ -1,0 +1,186 @@
+@use '@/styles' as *;
+
+.comboBox {
+  position: relative;
+  width: 100%;
+  //padding: $spacing-sm $spacing-md;
+  // Estilos por defecto (variante createSale)
+  background-color: transparent;
+  border: 0.5px solid var(--border-input);
+  border-radius: $border-radius-lg;
+  transition: all 0.2s ease;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: $font-size-sm;
+    color: $text-color;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  &__value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.8;
+    flex: 1;
+    min-height: 20px;
+    line-height: 20px;
+    font-size: $font-size-sm;
+    font-family: inherit;
+    font-weight: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: $font-size-sm;
+    color: $text-color;
+    padding: 0;
+    min-height: 20px;
+    line-height: 20px;
+    font-family: inherit;
+    font-weight: inherit;
+    
+    &::placeholder {
+      color: rgba($text-color, 0.6);
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    margin-left: $spacing-sm;
+    font-size: 0.8em;
+    color: $text-color;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+  }
+
+  &--open &__arrow {
+    transform: rotate(180deg);
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: $bg-color;
+    border: 1px solid var(--border-input);
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-lg;
+    z-index: $z-index-dropdown;
+    max-height: 240px;
+    overflow: auto;
+  }
+
+  &__options {
+    list-style: none;
+    margin: 0;
+    padding: $spacing-xs 0;
+  }
+
+  &__option {
+    padding: $spacing-sm $spacing-md;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    color: $text-color;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: rgba($primary-blue, 0.08);
+    }
+
+    &--selected {
+      background-color: rgba($primary-blue, 0.12);
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  &__noResults {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    color: rgba($text-color, 0.6);
+    font-style: italic;
+    text-align: center;
+    cursor: default;
+  }
+
+  &--error {
+    border-color: $danger-color;
+    box-shadow: $box-shadow-error;
+  }
+
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    
+    .comboBox__trigger {
+      cursor: not-allowed;
+    }
+  }
+
+  &:hover:not(&--disabled) {
+    border-color: var(--color-blue);;
+  }
+
+  &:focus-within {
+    border-color: $primary-blue;
+    box-shadow: none;
+  }
+
+  // -----------------------------------------------------------------------------
+  // VARIANTES DE TAMAÑO
+  // -----------------------------------------------------------------------------
+
+  &--xs {
+    padding: $spacing-xs $spacing-sm;
+    
+    .comboBox__trigger,
+    .comboBox__value,
+    .comboBox__input,
+    .comboBox__option {
+      font-size: $font-size-xs;
+    }
+  }
+
+  &--small {
+    padding: $spacing-sm $spacing-md;
+    
+    .comboBox__trigger,
+    .comboBox__value,
+    .comboBox__input,
+    .comboBox__option {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--medium {
+    padding: $spacing-xs $spacing-sm;
+    
+    .comboBox__trigger,
+    .comboBox__value,
+    .comboBox__input,
+    .comboBox__option {
+      font-size: $font-size-md;
+    }
+  }
+
+  &--large {
+    padding: $spacing-lg $spacing-xl;
+    
+    .comboBox__trigger,
+    .comboBox__value,
+    .comboBox__input,
+    .comboBox__option {
+      font-size: $font-size-lg;
+    }
+  }
+}

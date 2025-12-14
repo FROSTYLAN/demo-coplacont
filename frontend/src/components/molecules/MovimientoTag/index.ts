@@ -1,0 +1,1 @@
+export { MovimientoTag } from './MovimientoTag';

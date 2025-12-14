@@ -1,0 +1,214 @@
+// =============================================================================
+// VARIABLES DE SASS - COPLACONT FRONTEND
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// COLORES PRINCIPALES
+// -----------------------------------------------------------------------------
+
+// Colores neutrales
+$neutral-1: #1F1F1F;
+$neutral-2: #3A3A3A;
+$neutral-3: #DBD9D9;
+$neutral-4: #F6F6F6;
+$neutral-5: #FFFFFF;
+
+$table-head:#B9B9B9;
+
+// Colores principales
+$primary-blue: #003869;
+$secondary-blue: #1A98CA;
+
+$border-light:#00000040;
+$border-dark:#FFFFFF40;
+
+// Colores de estado
+$success-color: #26C954;
+$danger-color: #CC2525;
+$warning-color: #F3CB26;
+
+
+// -----------------------------------------------------------------------------
+// SISTEMA DE TEMAS UNIFICADO
+// -----------------------------------------------------------------------------
+
+// Variables CSS que se adaptan automáticamente al tema del sistema
+:root {
+  // Tema claro por defecto
+  --bg-color: #{$neutral-5};           // #FFFFFF
+  --bg-color-secondary: #{$neutral-4};
+  --text-color: #{$neutral-1};  // #1F1F1F
+  --text-color-1: #{$neutral-2}; // #3A3A3A
+  --text-color-reverse: #{$neutral-5}; // #FFFFFF
+  --bg-card-v1: #{$neutral-4};         // #F6F6F6
+  --bg-card-v2: #{$neutral-5};         // #FFFFFF
+  --text-color-card-skills: #{$neutral-2}; // #3A3A3A
+  --border-color: #{$neutral-3};
+  --border-input: #{$border-light};
+  --color-blue:#{$primary-blue};
+
+  // Tema oscuro automático basado en preferencias del sistema
+  @media (prefers-color-scheme: dark) {
+    --bg-color: #{$neutral-1};             // #1F1F1F
+    --bg-color-secondary: #000000;
+    --text-color: #{$neutral-5};           // #FFFFFF
+    --text-color-1: #{$neutral-3}; // #DBD9D9
+    --text-color-reverse: #{$neutral-1};   // #1F1F1F
+    --bg-card-v1: #{$neutral-2};           // #3A3A3A
+    --bg-card-v2: #{$neutral-1};           // #1F1F1F
+    --text-color-card-skills: #{$neutral-3}; // #DBD9D9
+    --border-color: #{$neutral-2};
+    --border-input: #{$border-dark};
+    --color-blue:#{$secondary-blue}; 
+  }
+}
+
+// Soporte explícito para data-theme establecido por ThemeProvider
+:root[data-theme="light"] {
+  --bg-color: #{$neutral-5};
+  --bg-color-secondary: #{$neutral-4};
+  --text-color: #{$neutral-1};
+  --text-color-1: #{$neutral-2};
+  --text-color-reverse: #{$neutral-5};
+  --bg-card-v1: #{$neutral-4};
+  --bg-card-v2: #{$neutral-5};
+  --text-color-card-skills: #{$neutral-2};
+  --border-color: #{$neutral-3};
+  --border-input: #{$border-light};
+
+  --color-blue:#{$primary-blue};
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #{$neutral-1};
+  --bg-color-secondary: #000000;
+  --text-color: #{$neutral-5};
+  --text-color-1: #{$neutral-3};
+  --text-color-reverse: #{$neutral-1};
+  --bg-card-v1: #{$neutral-2};
+  --bg-card-v2: #{$neutral-1};
+  --text-color-card-skills: #{$neutral-3};
+  --border-color: #{$neutral-2};
+  --border-input: #{$border-dark};
+  --color-blue:#{$secondary-blue};   
+}
+
+// Variables Sass para compatibilidad con código existente
+$bg-color: var(--bg-color);
+$bg-color-secondary: var(--bg-color-secondary);
+$text-color: var(--text-color);
+$text-color-1: var(--text-color-1);
+$text-color-reverse: var(--text-color-reverse);
+$bg-card-v1: var(--bg-card-v1);
+$bg-card-v2: var(--bg-card-v2);
+$text-color-card-skills: var(--text-color-card-skills);
+$border-color: var(--border-color);
+$border-input: var(--border-input);
+$color-blue: var(--color-blue);
+
+
+// Color de botón neutro
+$button-color: $success-color;           // #1ABC9C
+
+
+// -----------------------------------------------------------------------------
+// ESPACIADO
+// -----------------------------------------------------------------------------
+
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 0.75rem;   // 12px
+$spacing-lg: 1rem;      // 16px
+$spacing-xl: 1.25rem;   // 20px
+$spacing-2xl: 1.5rem;   // 24px
+$spacing-3xl: 2rem;     // 32px
+$spacing-4xl: 2.5rem;   // 40px
+$spacing-5xl: 3rem;     // 48px
+
+// -----------------------------------------------------------------------------
+// TIPOGRAFÍA
+// -----------------------------------------------------------------------------
+
+$font-family-primary: 'Outfit', sans-serif;
+$font-family-secondary: 'Outfit', sans-serif;
+
+$font-size-xs: 0.75rem;   // 12px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-md: 1rem;      // 16px
+$font-size-lg: 1.125rem;  // 18px
+$font-size-xl: 1.25rem;   // 20px
+$font-size-2xl: 1.5rem;   // 24px
+$font-size-3xl: 2rem;     // 32px
+$font-size-4xl: 2.25rem;  // 36px
+$font-size-5xl: 2.5rem;   // 40px
+$font-size-6xl: 3rem;     // 48px
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.1;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.6;
+
+// -----------------------------------------------------------------------------
+// BORDES Y RADIOS
+// -----------------------------------------------------------------------------
+
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-full: 9999px;
+
+// Bordes
+$border-color: $neutral-3;
+
+
+// -----------------------------------------------------------------------------
+// TRANSICIONES
+// -----------------------------------------------------------------------------
+
+$transition-fast: 150ms ease;
+$transition-normal: 300ms ease;
+$transition-slow: 500ms ease;
+
+
+// -----------------------------------------------------------------------------
+// BREAKPOINTS RESPONSIVOS
+// -----------------------------------------------------------------------------
+
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+// -----------------------------------------------------------------------------
+// Z-INDEX
+// -----------------------------------------------------------------------------
+
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// -----------------------------------------------------------------------------
+// SOMBRAS PREDEFINIDAS
+// -----------------------------------------------------------------------------
+
+$box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$box-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.15);
+$box-shadow-xl: 0 8px 15px rgba(0, 0, 0, 0.2);
+$box-shadow-2xl: 0 15px 30px rgba(0, 0, 0, 0.25);
+
+// Sombras específicas
+$box-shadow-focus: 0 0 0 2px rgba(0, 56, 105, 0.25); // $primary-blue con transparencia
+$box-shadow-error: 0 0 0 2px rgba(204, 37, 37, 0.25); // $danger-color con transparencia

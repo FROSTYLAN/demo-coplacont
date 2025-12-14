@@ -1,0 +1,18 @@
+.StateTag{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+
+  &--active{
+    background-color:#26C9541A;
+;
+  }
+
+  &--inactive{
+    background-color: #0000000D;
+;
+  }
+}

@@ -1,0 +1,45 @@
+@use '@/styles' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  img {
+    
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  
+  // Variants for different sizes
+  &--small {
+    img {
+     
+    }
+  }
+  
+  &--large {
+    img {
+      
+    }
+  }
+  
+  // Clickable state
+  &--clickable {
+    cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

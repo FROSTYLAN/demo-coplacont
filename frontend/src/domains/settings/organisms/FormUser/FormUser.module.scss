@@ -1,0 +1,22 @@
+.FormUser {
+  &__Form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__Section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: 8px;
+    background-color: var(--color-neutral-50);
+  }
+
+  &__FormField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

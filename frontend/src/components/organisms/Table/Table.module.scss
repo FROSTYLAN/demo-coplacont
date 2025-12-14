@@ -1,0 +1,132 @@
+@use '@/styles' as *;
+
+.tableWrapper {
+  flex: 1;
+  background: $bg-color;
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  box-shadow: $box-shadow-sm;
+  max-height: 600px;
+  display: flex;
+}
+
+.table {
+  width: 100%;
+  display: grid;
+  grid-auto-rows: 36px;
+}
+
+.scrollableContent {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.actionsColumn {
+  width: 80px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border-color);
+  background: $bg-color;
+  overflow-y: auto;
+  box-sizing: border-box;
+  
+  .table {
+    grid-template-columns: 1fr;
+  }
+  
+  .headerCell {
+    background: $bg-color-secondary;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--grid-template, 1fr);
+  align-items: center;
+  border-bottom: 1px solid  var(--border-color);
+  
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.header {
+  background: $bg-color-secondary;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.cell {
+  white-space: nowrap;
+  padding: $spacing-xs $spacing-lg;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: $font-size-xs;
+  color: $text-color;
+  border-right: 1px solid  var(--border-color);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  
+  //Para ocultar scrollbar
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* Ocultar scrollbar en Firefox */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.headerCell {
+  font-weight: $font-weight-semibold;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.iconButton {
+  border: 1px solid  var(--border-color);
+  background: transparent;
+  padding: 6px 8px;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  font-size: $font-size-sm;
+}
+
+
+.emptyState {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-2xl;
+  text-align: center;
+  color: $neutral-4;
+  min-height: 300px;
+}
+
+.emptyState__icon {
+  margin-bottom: $spacing-lg;
+  opacity: 0.5;
+}
+
+.emptyState__title {
+  margin-bottom: $spacing-sm;
+}
+
+.emptyState__subtitle {
+  margin: 0;
+  opacity: 0.7;
+}

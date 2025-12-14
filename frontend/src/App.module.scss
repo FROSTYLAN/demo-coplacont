@@ -1,0 +1,19 @@
+@use "@/styles" as *;
+
+.App {
+  width: 100vw;
+  //min-height: 100vh;
+}
+
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

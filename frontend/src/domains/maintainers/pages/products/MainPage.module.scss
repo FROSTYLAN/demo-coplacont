@@ -1,0 +1,54 @@
+@use "@/styles" as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.filtersRow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: $spacing-lg;
+  align-items: end;
+}
+
+.alignEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actionRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.emptyStateContainer {
+  border: 1px solid $border-color;
+  border-top: none;
+  border-radius: 0 0 $border-radius-xl $border-radius-xl;
+  background: $bg-color;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $neutral-4;
+
+  .icon {
+    opacity: 0.6;
+    margin-bottom: $spacing-sm;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    color: $text-color;
+    margin-bottom: $spacing-xs;
+  }
+
+  .subtitle {
+    font-size: $font-size-sm;
+    color: $text-color-1;
+  }
+}

@@ -1,0 +1,27 @@
+@use "@/styles" as *;
+
+.mainLayout {
+  display: flex;
+  min-height: 100vh;
+  background-color: $bg-color;
+}
+
+.content {
+  flex: 1;
+  padding: $spacing-xl;
+  height: 100vh;
+  //overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $neutral-3;
+    border-radius: $border-radius-full;
+  }
+}

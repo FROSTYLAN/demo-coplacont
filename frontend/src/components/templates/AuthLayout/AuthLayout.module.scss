@@ -1,0 +1,46 @@
+@use "@/styles" as *;
+
+.AuthLayout{
+  background-color: $bg-color-secondary;
+  height: 100vh;
+  width: 100vw;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__title{
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 16px;
+  }
+
+  &__content{
+    flex: 1;
+    background-color: $bg-color;
+    border-radius: $border-radius-xl;
+    box-shadow: 0px 0px 4px 0px #00000040;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 20px;
+    overflow-y: auto;
+
+    &__inner{
+      width: 100%;
+      //width: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      gap: 30px;
+
+      // Pantallas small y superiores
+      @media (min-width: 640px) {
+        width: 400px;
+      }
+    }
+  }
+}

@@ -1,0 +1,196 @@
+@use '@/styles' as *;
+
+/**
+ * Modal component styles
+ */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-index-modal-backdrop;
+  padding: $spacing-lg;
+}
+
+.modal {
+  background: var(--bg-color);
+  border-radius: $border-radius-lg;
+  box-shadow: $box-shadow-lg;
+  min-width: 600px;
+  max-width: 8s00px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: $z-index-modal;
+  position: relative;
+}
+
+.header {
+  padding: $spacing-xl $spacing-xl $spacing-md;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid $neutral-3;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap:20px
+}
+
+.title {
+  margin: 0;
+  color: $text-color-1;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: $spacing-xs;
+  border-radius: $border-radius-md;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+
+  &:hover {
+    color: $text-color-1;
+  }
+
+  &:focus {
+    outline: 2px solid $primary-blue;
+    outline-offset: 2px;
+  }
+}
+
+.content {
+  padding: $spacing-lg $spacing-xl;
+}
+
+.description {
+  margin-bottom: $spacing-lg;
+  color: $text-color-1;
+}
+
+.downloadSection {
+  margin-bottom: $spacing-xl;
+}
+
+.infoSection {
+  margin-bottom: $spacing-xl;
+}
+
+.infoTitle {
+  font-weight: $font-weight-semibold;
+  color: $text-color-1;
+  margin-bottom: $spacing-md;
+}
+
+.infoList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    padding-left: $spacing-lg;
+    margin-bottom: $spacing-sm;
+    color: $text-color-1;
+    line-height: 1.5;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: $primary-blue;
+      font-weight: bold;
+    }
+  }
+}
+
+.uploadSection {
+  .fileInput {
+    display: none;
+  }
+
+  .fileInputLabel {
+    display: inline-block;
+    padding: $spacing-md $spacing-lg;
+    background-color: $neutral-2;
+    border: 2px dashed $neutral-4;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    width: 100%;
+    color: $text-color-1;
+
+    &:hover {
+      border-color: $primary-blue;
+      background-color: rgba($primary-blue, 0.05);
+    }
+
+    &:focus-within {
+      outline: 2px solid $primary-blue;
+      outline-offset: 2px;
+    }
+  }
+
+  .fileName {
+    margin-top: $spacing-sm;
+    padding: $spacing-sm;
+    background-color: $neutral-2;
+    border-radius: $border-radius-sm;
+    color: $text-color-1;
+    font-size: $font-size-sm;
+  }
+}
+
+.footer {
+  padding: $spacing-xl $spacing-xl;
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-md;
+  border-top: 1px solid $neutral-3;
+}
+
+// Responsive design
+@include respond-to(sm) {
+  .backdrop {
+    padding: $spacing-md;
+  }
+
+  .modal {
+    max-width: 100%;
+  }
+
+  .header,
+  .content,
+  .footer {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+
+  .title {
+    font-size: $font-size-md;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
