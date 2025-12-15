@@ -33,7 +33,7 @@ async function createApp(): Promise<Express> {
 
   // Habilitar CORS
   app.enableCors({
-    origin: true, // Permitir todos los orígenes
+    origin: 'https://demo-coplacont.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Métodos HTTP permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Headers permitidos
     credentials: true, // Permitir cookies y credenciales

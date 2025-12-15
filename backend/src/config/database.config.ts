@@ -6,5 +6,5 @@ export const databaseConfig: TypeOrmModuleOptions = {
   autoLoadEntities: true,
   synchronize: true,
   //dropSchema:true,
-  ssl: true
+  ssl: true,
 };
