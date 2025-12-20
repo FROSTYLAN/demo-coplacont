@@ -84,7 +84,73 @@ export const LoginPage: React.FC = () => {
         subtitle="Ingresa a tu cuenta para continuar"
       />
 
-      {/** Organismo LoginForm - Contiene toda la lógica del formulario */}
+      <div
+        style={{
+          position: 'fixed',
+          right: 40,
+          bottom: 32,
+          zIndex: 9999,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 12,
+          pointerEvents: 'none',
+        }}
+      >
+        <img
+          src="/assets/ducz-welcome.png"
+          alt="Bienvenida"
+          style={{
+            width: 160,
+            height: 'auto',
+            pointerEvents: 'none',
+            position: 'relative',
+            zIndex: 0,
+            marginTop: 24,
+          }}
+        />
+        <div
+          style={{
+            position: 'relative',
+            maxWidth: 360,
+            background: 'var(--bg-color)',
+            color: 'var(--text-color)',
+            borderRadius: 12,
+            border: '1px solid rgba(0,0,0,0.1)',
+            boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
+            padding: '12px 14px',
+            textAlign: 'center',
+            pointerEvents: 'auto',
+            marginTop: -48,
+            zIndex: 1,
+          }}
+        >
+          <div
+            style={{
+              fontWeight: 700,
+              marginBottom: 6,
+            }}
+          >
+            Acceso administrador demo
+          </div>
+          <div>Email: admin@coplacont.com</div>
+          <div>Contraseña: admin123</div>
+          <div
+            style={{
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              top: -10,
+              width: 0,
+              height: 0,
+              borderLeft: '10px solid transparent',
+              borderRight: '10px solid transparent',
+              borderBottom: '10px solid var(--bg-color)',
+            }}
+          />
+        </div>
+      </div>
+
       <LoginForm
         onSubmit={handleLogin}
         isLoading={isLoading}
