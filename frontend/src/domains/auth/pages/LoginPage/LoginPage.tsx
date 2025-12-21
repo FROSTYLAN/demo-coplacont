@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { AuthLayout, AuthHeader } from '@/components';
+import { AuthLayout, AuthHeader, Loader } from '@/components';
 
 import { 
   LoginForm, 
@@ -11,6 +11,7 @@ import {
 } from '@/domains/auth';
 import { useNavigate } from 'react-router-dom';
 import { MAIN_ROUTES } from '@/router';
+import { apiClient } from '@/shared/services/apiService';
 
 //import styles from './LoginPage.module.scss';
 
@@ -19,6 +20,8 @@ export const LoginPage: React.FC = () => {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState<string>("");
+  const [demoReady, setDemoReady] = useState(false);
+  const [connecting, setConnecting] = useState(false);
 
   /**
    * Maneja el proceso de login
@@ -78,84 +81,140 @@ export const LoginPage: React.FC = () => {
 
   return (
     <AuthLayout>
-      {/** Header de autenticación - Molécula reutilizable */}
-      <AuthHeader
-        title="Bienvenido al Sistema Coplacont"
-        subtitle="Ingresa a tu cuenta para continuar"
-      />
-
-      <div
-        style={{
-          position: 'fixed',
-          right: 40,
-          bottom: 32,
-          zIndex: 9999,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 12,
-          pointerEvents: 'none',
-        }}
-      >
-        <img
-          src="/assets/ducz-welcome.png"
-          alt="Bienvenida"
-          style={{
-            width: 160,
-            height: 'auto',
-            pointerEvents: 'none',
-            position: 'relative',
-            zIndex: 0,
-            marginTop: 24,
-          }}
-        />
+      {!demoReady ? (
         <div
           style={{
-            position: 'relative',
-            maxWidth: 360,
-            background: 'var(--bg-color)',
-            color: 'var(--text-color)',
-            borderRadius: 12,
-            border: '1px solid rgba(0,0,0,0.1)',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
-            padding: '12px 14px',
-            textAlign: 'center',
-            pointerEvents: 'auto',
-            marginTop: -48,
-            zIndex: 1,
+            width: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingTop: 40,
           }}
         >
           <div
             style={{
-              fontWeight: 700,
-              marginBottom: 6,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 16,
             }}
           >
-            Acceso administrador demo
+            {!connecting ? (
+              <button
+                onClick={async () => {
+                  setConnecting(true);
+                  const tryConnect = async () => {
+                    try {
+                      const res = await apiClient.get('/health');
+                      if (res.status === 200) {
+                        setDemoReady(true);
+                        setConnecting(false);
+                        return;
+                      }
+                    } catch {
+                      setTimeout(tryConnect, 1500);
+                    }
+                  };
+                  await tryConnect();
+                }}
+                style={{
+                  padding: '12px 20px',
+                  borderRadius: 10,
+                  border: '1px solid rgba(0,0,0,0.15)',
+                  background: 'var(--bg-color)',
+                  color: 'var(--text-color)',
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                }}
+              >
+                Iniciar demo
+              </button>
+            ) : (
+              <Loader text="Conectándose al servidor..." />
+            )}
           </div>
-          <div>Email: admin@coplacont.com</div>
-          <div>Contraseña: admin123</div>
+        </div>
+      ) : (
+        <>
+          <AuthHeader
+            title="Bienvenido al Sistema Coplacont"
+            subtitle="Ingresa a tu cuenta para continuar"
+          />
+
           <div
             style={{
-              position: 'absolute',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              top: -10,
-              width: 0,
-              height: 0,
-              borderLeft: '10px solid transparent',
-              borderRight: '10px solid transparent',
-              borderBottom: '10px solid var(--bg-color)',
+              position: 'fixed',
+              right: 40,
+              bottom: 32,
+              zIndex: 9999,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 12,
+              pointerEvents: 'none',
             }}
-          />
-        </div>
-      </div>
+          >
+            <img
+              src="/assets/ducz-welcome.png"
+              alt="Bienvenida"
+              style={{
+                width: 160,
+                height: 'auto',
+                pointerEvents: 'none',
+                position: 'relative',
+                zIndex: 0,
+                marginTop: 24,
+              }}
+            />
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: 360,
+                background: 'var(--bg-color)',
+                color: 'var(--text-color)',
+                borderRadius: 12,
+                border: '1px solid rgba(0,0,0,0.1)',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
+                padding: '12px 14px',
+                textAlign: 'center',
+                pointerEvents: 'auto',
+                marginTop: -48,
+                zIndex: 1,
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: 700,
+                  marginBottom: 6,
+                }}
+              >
+                Acceso administrador demo
+              </div>
+              <div>Email: admin@coplacont.com</div>
+              <div>Contraseña: admin123</div>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  top: -10,
+                  width: 0,
+                  height: 0,
+                  borderLeft: '10px solid transparent',
+                  borderRight: '10px solid transparent',
+                  borderBottom: '10px solid var(--bg-color)',
+                }}
+              />
+            </div>
+          </div>
 
-      <LoginForm
-        onSubmit={handleLogin}
-        isLoading={isLoading}
-        error={loginError}
-      />
+          <LoginForm
+            onSubmit={handleLogin}
+            isLoading={isLoading}
+            error={loginError}
+          />
+        </>
+      )}
     </AuthLayout>
   );
 };
