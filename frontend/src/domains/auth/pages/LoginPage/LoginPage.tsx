@@ -130,7 +130,26 @@ export const LoginPage: React.FC = () => {
                 Iniciar demo
               </button>
             ) : (
-              <Loader text="Conectándose al servidor..." />
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 12,
+                }}
+              >
+                <Loader text="Conectándose al servidor..." />
+                <div
+                  style={{
+                    color: 'var(--text-color)',
+                    opacity: 0.85,
+                    textAlign: 'center',
+                    maxWidth: 460,
+                  }}
+                >
+                  Este servidor es gratuito y puede tardar unos minutos en activarse.
+                </div>
+              </div>
             )}
           </div>
         </div>
