@@ -9,23 +9,35 @@ export interface LoaderProps {
   inline?: boolean;
   /** Clase CSS adicional */
   className?: string;
+  /** Aviso adicional */
+  note?: string;
+  /** Mostrar el aviso sobre el spinner */
+  noteAbove?: boolean;
 }
 
 export const Loader: React.FC<LoaderProps> = ({ 
   text = 'Cargando...', 
   inline = false, 
-  className 
+  className,
+  note,
+  noteAbove = false,
 }) => {
   const loaderClass = `${styles.loader} ${inline ? styles.inline : ''} ${className || ''}`.trim();
   
   return (
     <div className={loaderClass}>
       <div className={styles.content}>
+        {note && noteAbove && (
+          <div className={styles.note}>{note}</div>
+        )}
 
         <div className={styles.spinner}>
         <Logo />
         </div>
         <span className={styles.text}>{text}</span>
+        {note && !noteAbove && (
+          <div className={styles.note}>{note}</div>
+        )}
       </div>
     </div>
   );
