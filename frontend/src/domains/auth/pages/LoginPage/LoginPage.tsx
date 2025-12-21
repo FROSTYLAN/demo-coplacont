@@ -118,16 +118,19 @@ export const LoginPage: React.FC = () => {
                   await tryConnect();
                 }}
                 style={{
-                  padding: '12px 20px',
-                  borderRadius: 10,
-                  border: '1px solid rgba(0,0,0,0.15)',
-                  background: 'var(--bg-color)',
-                  color: 'var(--text-color)',
+                  padding: '16px 32px',
+                  borderRadius: 14,
+                  border: 'none',
+                  background: 'var(--color-blue)',
+                  color: 'var(--text-color-reverse)',
                   cursor: 'pointer',
-                  fontWeight: 700,
+                  fontWeight: 800,
+                  fontSize: 18,
+                  letterSpacing: '0.4px',
+                  boxShadow: '0 10px 24px rgba(0, 0, 0, 0.25)',
                 }}
               >
-                Iniciar demo
+                🚀 Iniciar demo
               </button>
             ) : (
               <Loader 
